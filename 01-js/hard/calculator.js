@@ -16,6 +16,99 @@
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {}
+class Calculator {
+  constructor() {
+      this.result = 0;
+  }
+
+  add(num) {
+      this.result += num;
+  }
+
+  subtract(num) {
+      this.result -= num;
+  }
+
+  multiply(num) {
+      this.result *= num;
+  }
+
+  divide(num) {
+      if (num !== 0) {
+          this.result /= num;
+      } else {
+          throw new Error("Division by zero is not allowed");
+      }
+  }
+
+  clear() {
+      this.result = 0;
+  }
+
+  getResult() {
+      return this.result;
+  }
+
+  calculate(expression) {
+      // Remove continuous spaces and split the expression into tokens
+      const tokens = expression.replace(/\s+/g, '').match(/(\d+(\.\d+)?|[-+*/()])/g);
+
+      // Check for invalid characters in the expression
+      if (!tokens || tokens.join('') !== expression.replace(/\s+/g, '')) {
+          throw new Error("Invalid expression");
+      }
+
+      const stack = [];
+      const operators = [];
+      const precedence = { '+': 1, '-': 1, '*': 2, '/': 2 };
+
+      for (const token of tokens) {
+          if (token === '(') {
+              stack.push(token);
+          } else if (token === ')') {
+              while (stack.length && stack[stack.length - 1] !== '(') {
+                  this.performOperation(stack.pop(), operators.pop());
+              }
+              stack.pop(); // Discard '('
+          } else if (token in precedence) {
+              while (
+                  operators.length &&
+                  precedence[operators[operators.length - 1]] >= precedence[token]
+              ) {
+                  this.performOperation(stack.pop(), operators.pop());
+              }
+              operators.push(token);
+          } else {
+              stack.push(parseFloat(token));
+          }
+      }
+
+      while (operators.length > 0) {
+          this.performOperation(stack.pop(), operators.pop());
+      }
+
+      return this.getResult();
+  }
+
+  performOperation(operand2, operator) {
+      const operand1 = this.result;
+      switch (operator) {
+          case '+':
+              this.add(operand2);
+              break;
+          case '-':
+              this.subtract(operand2);
+              break;
+          case '*':
+              this.multiply(operand2);
+              break;
+          case '/':
+              this.divide(operand2);
+              break;
+      }
+  }
+}
+
+// Test the Calculator class
 
 module.exports = Calculator;

@@ -15,6 +15,7 @@ function countVowels(str) {
       if(vowels.includes(arrystr[i])){
          counterofvowels += 1;
       }
+                              
    
     }
     return counterofvowels;
