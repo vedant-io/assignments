@@ -3,7 +3,7 @@
   What's Anagram?
   - A word, phrase, or name formed by rearranging the letters of another, such as spar, formed from rasp.
 */
-
+//Hello World
 function isAnagram(str1, str2) {
   if (str1.length!== str2.length) {
     return false;
