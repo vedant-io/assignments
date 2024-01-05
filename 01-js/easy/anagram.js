@@ -36,5 +36,6 @@ function isAnagram(str1, str2) {
   return true;
 }
 //Hello
+//Another Comment
 
 module.exports = isAnagram;
