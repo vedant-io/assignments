@@ -12,17 +12,11 @@
     - For any other route not defined in the server return 404
     Testing the server - run `npm run test-fileServer` command in terminal
  */
-const express = require('express');
-const fs = require('fs');
-const path = require('path');
+import express from "express";
+import fs from "fs";
+import path from "path";
 const app = express();
 
-app.get("/", function(res,req){
+app.get("/", function (res, req) {});
 
-	
-
-})
-
-
-
-module.exports = app;
+export default app;
