@@ -2,7 +2,7 @@
 
 This folder contains assignments related to asynchronous JavaScript.
 
-### Hello
+### Test
 
 ### Assignments
 
