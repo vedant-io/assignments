@@ -4,8 +4,9 @@
   - A word, phrase, or name formed by rearranging the letters of another, such as spar, formed from rasp.
 */
 //Hello World
+//test1
 function isAnagram(str1, str2) {
-  if (str1.length!== str2.length) {
+  if (str1.length !== str2.length) {
     return false;
   }
   const str1Arr = str1.toLowerCase().split("");
@@ -29,7 +30,7 @@ function isAnagram(str1, str2) {
     }
   }
   for (let key in str1Obj) {
-    if (str1Obj[key]!== str2Obj[key]) {
+    if (str1Obj[key] !== str2Obj[key]) {
       return false;
     }
   }
